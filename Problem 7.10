@@ -1,0 +1,55 @@
+//nhân 2 ma trận
+
+#include<bits/stdc++.h>
+using namespace std;
+#define MAXR 100
+#define MAXC 100
+
+void NhapMaTran(float a[MAXR][MAXC], int &m, int &n)
+{
+    cin >> m >> n;
+    for (int i=0; i<m; i++)
+    {
+        for (int j=0; j<n; j++)
+        {
+            cin >> a[i][j];
+        }
+    }
+
+}
+float Tich (float a[][MAXC], float b[][MAXC], int n, int i,int j)
+{
+    float sum=0;
+    for (int f=0; f<n; f++)
+    {
+        sum+= a[i][f]*b[f][j];
+    }
+    return sum;
+}
+void XuatMang (float c[][MAXC], int m, int k)
+{
+    for (int i=0; i<m; i++)
+    {
+        for (int j=0; j<k; j++)
+        {
+            cout << c[i][j]<< " ";
+        }
+        cout << endl;
+    }
+}
+int main()
+{
+    float a[MAXR][MAXC], b[MAXR][MAXC], c[MAXC][MAXR];
+    int n, m, l ,k;
+    NhapMaTran(a, m, n);
+    NhapMaTran(b,l,k);
+    for (int i=0; i<m; i++)
+    {
+        for (int j=0; j<k; j++)
+        {
+            c[i][j]=Tich(a,b,n,i,j);
+        }
+    }
+    XuatMang(c,m,k);
+    return 0;
+}
